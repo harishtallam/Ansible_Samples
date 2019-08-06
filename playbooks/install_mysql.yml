@@ -1,4 +1,4 @@
-- hosts: webservers
+- hosts: mycentos
   tasks:
     - name: Install MySQL
       action: apt pkg={{ item }} state=installed
