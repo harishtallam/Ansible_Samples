@@ -1,9 +1,10 @@
 ---
 - hosts: mycentos
   vars:
-   myname:
+   myname: 
     - Harish
     - Tallam
   tasks:
-    debug:
-      msg: "{{myname[1]}}"
+    - name: Variable example 1
+      debug:
+        msg: "{{myname}}"
