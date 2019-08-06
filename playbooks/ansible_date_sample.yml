@@ -3,4 +3,4 @@
   tasks:
     - name: Date and Time example in Ansible
       debug:
-        vars=ansible_date_time.time
+        var=ansible_date_time.time
