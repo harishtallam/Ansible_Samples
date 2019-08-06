@@ -1,16 +1,20 @@
 ---
 - name: Install Httpd and restart service after copying files
-- hosts: 192.168.2.184
+  hosts: 192.168.2.184
   become: true
   tasks:
    - name: Install Httpd
-     yum: name=httpd state=present
-   - name: Copy the configuration files
-     copy: src=/home/appuser/jenkins.log dest=/var/www/html
+     yum: name=httpd state=present 
+   - name: Copy the files
+     copy:
+       src=/home/appuser/temp.log
+       dest=/var/www/html 
      notify:
       - restart httpd
       - name: Start httpd service
-  service: name=httpd state=started enabled=yes
+        service: name=httpd state=started enabled=yes
   handlers:
     - name: restart httpd
       service: name=httpd state=restarted
+
+# ansible-playbook handlers_with_httpd.yml --user=appuser --ask-sudo-pass
