@@ -13,4 +13,8 @@
       state: present
    - name: Install Jenkins
      yum: name=jenkins state=present
+   - name: Start the service
+     enabled: yes
+     service:  state=started
+     
 
