@@ -7,4 +7,6 @@
         var=ansible_date_time.time
     - name: Ansible timestamp filename example
       command: touch harish{{ansible_date_time.time}}.txt
+    - name: Ansible timestamp filename example1
+      file: dest:harish_new_{{ansible_date_time.time}}.txt state=touch
 
