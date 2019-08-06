@@ -1,0 +1,8 @@
+---
+- hosts: mycentos
+  vars:
+   name: My New Variable
+  tasks:
+    - name: Variable example
+      debug:
+        msg: "{{name}}"
