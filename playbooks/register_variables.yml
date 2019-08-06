@@ -1,0 +1,8 @@
+---
+- hosts: mycentos
+  tasks:
+    - name: Register variables basic example
+      shell: "find *.log"
+      register: reg_output
+    - debug:
+        var: reg_output
