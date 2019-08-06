@@ -1,6 +1,6 @@
 # Install Jenkins
 ---
-- host: 192.168.2.186
+- hosts: 192.168.2.186
   become: true
   vars:
    download_repo: "https://pkg.jenkins.io/redhat-stable/jenkins.repo"
@@ -14,7 +14,7 @@
    - name: Install Jenkins
      yum: name=jenkins state=present
    - name: Start the service
-     enabled: yes
-     service:  state=started
+     service:  state=started enabled=yes
      
-
+# Command to run
+# ansible-playbook install_jenkins.yml --user=appuser --ask-sudo-pass
