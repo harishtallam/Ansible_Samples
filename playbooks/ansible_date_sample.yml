@@ -1,6 +1,14 @@
+---
 - hosts: mycentos
   #become: true
   tasks:
     - name: Date and Time example in Ansible
       debug:
         var=ansible_date_time.time
+
+
+---
+- hosts: mycentos
+  tasks:
+    - name: Ansible timestamp filename example
+      command: touch harish{{ansible_date_time.time}}.txt
