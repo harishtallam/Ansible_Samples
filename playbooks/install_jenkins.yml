@@ -1,0 +1,16 @@
+# Install Jenkins
+---
+- host: 192.168.2.186
+  become: true
+  vars:
+   download_repo: "https://pkg.jenkins.io/redhat-stable/jenkins.repo"
+  tasks:
+   - name: Download the Repo
+     command: "wget -O /etc/yum.repos.d/jenkins.repo {{download_repo}}"
+   - name: Import RPM key
+     rpm_key:
+      key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key 
+      state: present
+   - name: Install Jenkins
+     yum: name=jenkins state=present
+

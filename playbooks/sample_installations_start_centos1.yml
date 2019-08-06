@@ -1,0 +1,37 @@
+# Installations in CentOS or Red Hat Distributions
+# This installs JDK and Maven
+
+---
+- hosts: mycentos
+  become: true
+  vars:
+    download_url: <<MENTION JDK URL>>
+  tasks:
+    - name: Download JDK
+      command: "wget --no-check-certificates --no-cookies --header 'Cookie: oraclelicense=accept-securebackup-cookie' {{download_url}}"
+    - name: Install JDK
+      command: "rpm -ivh <<MENTION RPM NAME>>"
+
+
+--- 
+- hosts: mycentos
+  become: true
+  tasks:
+    - name: Download Maven
+      get_url: url=http://www-us.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz dest=/opt/apache-maven-3.5.3-bin.tar.gz
+    - name: Untar Maven
+      command: tar -xvzf /opt/apache-maven-3.5.3-bin.tar.gz -C /opt/
+    - name: Create a directory
+      file: dest=/opt/maven state=directory mode=755
+    - name: Move to a directory
+      command: mv /opt/apache-maven-3.5.3-bin /opt/maven/
+    - name: Update Profile
+      copy: content="export M2_HOME=/opt/maven/apache-maven-3.5.3-bin \n" dest=/opt/profile.d/maven.sh
+      # lineinfile is used to add additional or append lines to existing files
+    - lineinfile:
+      path: /etc/profile.d/maven.sh
+      line: 'export PATH=${M2_HOME}/bin:${PATH}'
+    - name: Source file
+      shell: source /etc/profile.d/maven.sh
+
+      

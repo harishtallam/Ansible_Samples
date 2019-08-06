@@ -1,0 +1,12 @@
+# Installations in CentOS or Red Hat Distributions
+# This installs vim, git and apache httpd server
+--- host: mycentos
+    become: true
+    tasks:
+      - name: Install vim and git package
+        yum: name=vim,git state=present
+      - name: Install Apache Httpd server
+        yum: name=httpd state=present
+      - name: Start Apache Httpd service
+        service: name=httpd state=started
+      
