@@ -5,18 +5,18 @@
   tags:
     - harishtallam
   pre_tasks:
-    - debug: msg="Started with tag "harishtallam""
+    - debug: msg="Started with tag - harishtallam"
   tasks:
     - name: Execution in tasks
       debug: msg="Now we are in tasks tag"
   post_tasks:
-    - name: Play without tags
     - debug: msg="Now we are in post tasks"
-      hosts: localhost
+- name: Play without tags
+  hosts: localhost
       #become: true
-      tasks: 
-       - name: Command to list files
-         shell: ls -lrt > harishtallam.txt
+  tasks: 
+   - name: Command to list files
+     shell: ls -lrt > harishtallam.txt
 
 # ansible-playbook preposttag.yml --list-tags
 # ansible-playbook preposttag.yml --tag harishtallam
