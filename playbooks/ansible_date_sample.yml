@@ -1,5 +1,5 @@
 - hosts: mycentos
-  become: true
+  #become: true
   tasks:
     - name: Date and Time example in Ansible
       debug:
