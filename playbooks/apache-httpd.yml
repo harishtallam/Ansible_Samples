@@ -3,6 +3,12 @@ cat httpd.yaml
 - name: This sets up an httpd webserver
   hosts: ansibleclient01.local
   tasks:
+  - name: Download apache
+    command: "wget -O https://apache.org/<<apache-version>>.tar.gz"
+  - name: Unarchive the apache
+    ansible.builtin.unarchive: 
+      src: <<apache-version>>.tar.gz
+      dest: /opt/
   - name: Install apache packages 
     yum:
       name: httpd
