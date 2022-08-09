@@ -1,0 +1,11 @@
+# ansible-playbook 06_uninstall-start-apache-remote-host.yml
+---
+- name: Uninstall apache
+  hosts: 172.31.92.200
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Uninstall Apache Httpd
+    yum: name=httpd state=absent
+...

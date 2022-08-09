@@ -1,0 +1,33 @@
+# ansible-playbook 03_delete_dirs.yml
+---
+- name: myplaybookname
+  hosts: 172.31.92.200
+  become: true
+  become_user: root
+  
+  tasks:
+  - name: Create a directory
+    file:
+     path: /home/ansibleadmin/playbook_dir
+     mode: 755
+     owner: ansibleadmin
+     group: ansibleadmin
+     state: absent
+
+  - name: Create recursive directory
+    file:
+     path: /home/ansibleadmin/playbook_dir1/dir2/dir3
+     mode: 755
+     owner: ansibleadmin
+     group: ansibleadmin
+     state: absent
+
+  - name: Create multiple directories
+    file:
+     path: "{{ item }}"
+     state: absent
+    with_items:
+    - /home/ansibleadmin/trainee1
+    - /home/ansibleadmin/trainee2
+    - /home/ansibleadmin/trainee3
+...

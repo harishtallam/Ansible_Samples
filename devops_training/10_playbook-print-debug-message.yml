@@ -1,0 +1,10 @@
+
+# ansible-playbook 10_playbook-print-debug-message.yaml
+---
+- name: output playbook
+  hosts: 172.31.92.200
+
+  tasks:
+  - name: Print a message
+    debug: msg="Hello everyone"
+...

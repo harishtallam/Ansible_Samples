@@ -1,0 +1,14 @@
+# ansible-playbook 07_install-start-apache-localhost.yml
+---
+- name: install apache
+  hosts: localhost
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Install Apache Httpd
+    yum: name=httpd state=present
+
+  - name: Start Apache httpd
+    service: name=httpd state=started
+...

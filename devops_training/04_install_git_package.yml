@@ -1,0 +1,11 @@
+# ansible-playbook 04_install_git_package.yml
+---
+- name: Install Git and other softwares
+  hosts: 172.31.92.200
+  become: true
+  become_user: root
+  
+  tasks:
+  - name: Install Git
+    yum: name=git state=absent
+     

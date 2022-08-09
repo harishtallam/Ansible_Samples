@@ -1,0 +1,15 @@
+# ansible-playbook 05_install-start-apache-remote-host.yml
+---
+- name: install apache
+  hosts: 172.31.92.200
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Install Apache Httpd
+    yum: name=httpd state=present
+
+  - name: Start Apache httpd
+    service: name=httpd state=started
+
+...

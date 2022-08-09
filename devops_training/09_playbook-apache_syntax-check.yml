@@ -1,0 +1,27 @@
+
+# Note: For understanding purpose, line number 16 is intentionally mis-aligned
+#
+# Command for syntax-check:
+# ansible-playbook playbook-apache_syntax-check.yml --syntax-check
+#
+### Correct the indentation/syntax in line number 16 and re-run the syntax-check command again
+
+# Note: For understanding purpose, line number 16 is intentionally mis-aligned
+#
+# Command for dry-run or check-mode:
+# ansible-playbook playbook-apache_syntax-check.yml -C
+# ansible-playbook playbook-apache_syntax-check.yml --check
+
+---
+- name: install apache
+  hosts: 172.31.92.200
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Install Apache Httpd
+  yum: name=httpd state=present
+
+  - name: Start Apache httpd
+    service: name=httpd state=started
+...
