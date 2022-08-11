@@ -1,0 +1,27 @@
+
+#
+# This playbook is to understand running with "when" condition
+#
+# ansible-playbook 24_when_cond_02.yml
+#
+
+---
+- name: Install Apache 
+  hosts: localhost
+
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Install Apache on Ubuntu server
+    apt:
+      name: apache2
+      state: present
+    when: ansible_os_family == "Ubuntu"
+
+  - name: Install Apache on Amazon/Redhat/CentOs Server
+    yum:
+      name: httpd
+      state: present
+    when: ansible_os_family == "RedHat"
+...

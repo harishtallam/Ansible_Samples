@@ -1,0 +1,16 @@
+#
+# This playbook is to understand running without "when" condition
+#
+# ansible-playbook 23_without_when_cond_01.yml
+#
+
+---
+- name: Install Apache 
+  hosts: localhost
+
+  tasks:
+  - name: Install Apache on Ubuntu Server
+    apt-get:
+      name: apache2
+      state: present
+...

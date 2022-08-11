@@ -1,0 +1,34 @@
+
+#
+# This playbook helps in executing the playbook starting at particular tasks.
+# This approach helps in troubleshooting the execution of task
+# ansible-playbook 27_start-at-task-01.yml --start-at-task="Message"
+#
+#
+
+---
+- name: Setup Apache server
+  hosts: localhost
+
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: present
+    tags: install-httpd
+
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started
+    tags: start-httpd
+
+  - name: Message
+    debug: msg="Hello All 1"
+
+  - name: Message1
+    debug: msg="Hello All 2"
+
+  - name: Message2
+    debug: msg="Hello All 3"
+...

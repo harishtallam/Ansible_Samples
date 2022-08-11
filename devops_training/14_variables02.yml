@@ -1,0 +1,15 @@
+---
+- name: Variables usage
+  hosts: localhost
+
+  vars:
+    msg_var: bangalore
+
+  tasks:
+  - name: Print Message
+    debug: msg="Hello {{ msg_var }}"
+
+  - name: Print another Message
+    debug: msg="You are in {{ msg_var }}"
+
+...

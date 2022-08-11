@@ -1,0 +1,26 @@
+
+#
+# ansible-playbook 20_create_users_without_loops.yml
+#
+
+---
+- name: Create users
+  hosts: localhost
+
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Create Jerry
+    user:
+      name: jerry
+
+  - name: Create Tommy
+    user:
+      name: tommy
+
+  - name: Create Jimmy
+    user: 
+      name: jimmy
+
+...

@@ -1,0 +1,11 @@
+---
+- name: Setup httpd WebSever
+  yum: 
+      name: httpd
+      state: present
+
+- name: Start httpd
+  service:
+      name: httpd
+      state: started
+...

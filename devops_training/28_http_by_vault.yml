@@ -1,0 +1,27 @@
+
+# These steps are to encrypt the playbook file
+# Execute below command to create a playbook in encrypted format
+# On executing the command, we would need to write the playbook. Please provide password
+# ansible-vault create http_by_vault-01.yml
+#
+# Save and exit from the playbook after writing the playbook
+# Using the below command, check the playbook. It will show playbook content in encrypted format
+# cat http_by_vault-01.yml
+
+# Execution of playbook.
+# ansible-playbook http_by_vault-01.yml --ask-vault-pass
+#
+# Viewing playbook content
+# ansible-vault view http_by_vault-01.yml --ask-vault-pass
+
+# Editing playbook
+# ansible-vault edit http_by_vault-01.yml --ask-vault-pass
+
+- name: Install httpd package
+  hosts: localhost
+
+  tasks:
+    - name:  Install package
+      yum:
+        name: httpd
+        state: present

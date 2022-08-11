@@ -1,0 +1,27 @@
+
+# This playbook helps in understanding encrypting a paricular string.
+# Here, we are trying to encrypt a string named "httpd", so that it
+# can be printed in task
+#
+# ansible-vault encrypt_string 'httpd'
+# 
+# ansible-playbook 29_string_encryption_ansible_vault.yml
+
+---
+- name: Encrypted String Playbook
+  hosts: localhost
+
+  vars:
+    my_secret: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          64356436346634653539316438653838626434656531323731306439666239623362363366656465
+          3533363633623036326432303363333634616365393438320a363263376262343964323166383664
+          30366463336236663334393931616163386266363833393235373136363564633765366133363839
+          3339313165623233380a363830376335303133383036616165656238313533623964333436666136
+          3264
+
+    tasks:
+    - name: Print Encripted String
+      debug:
+        var: secret
+...

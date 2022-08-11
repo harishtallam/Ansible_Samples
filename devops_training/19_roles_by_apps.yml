@@ -1,0 +1,13 @@
+#
+# Please create roles - named and ntpd in /etc/ansible/roles directory (refer to roles directory)
+# Please save this playbook in /etc/ansible/playbooks directory
+# Command: ansible-playbook 19_roles_by_apps.yml
+#
+
+---
+- name: Install packages
+  hosts: all
+  roles:
+    - named
+    - ntpd
+...

@@ -1,0 +1,6 @@
+---
+- name: Install ntpd/chrony package
+  yum:
+    name: chrony
+    state: present
+...

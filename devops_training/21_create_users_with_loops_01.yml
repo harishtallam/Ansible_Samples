@@ -1,0 +1,22 @@
+
+#
+# ansible-playbook 21_create_users_with_loops_01.yml
+#
+
+---
+- name: Create users
+  hosts: localhost
+    
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Create Users
+    user:
+      name: "{{ item }}"
+
+    loop:
+    - jerry1
+    - tommy1
+    - jimmy1
+...

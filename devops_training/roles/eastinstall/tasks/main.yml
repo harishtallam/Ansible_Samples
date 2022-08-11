@@ -1,0 +1,22 @@
+---
+- name: Install Httpd WebSever # Task1
+  yum: 
+      name: httpd
+      state: present
+
+- name: Start httpd # Task2
+  service:
+      name: httpd
+      state: started
+
+- name: Open http port on firewall # Task3
+  firewalld:
+      service: http
+      permanent: true
+      state: enabled
+
+        #- name: Restart/Reload firewalld # Task4
+        #  service:
+        #      name: firewalld
+        #      state: reloaded
+...

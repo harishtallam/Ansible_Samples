@@ -1,0 +1,31 @@
+
+#
+# Tags helps in executing particular task rather than running all tasks in a playbook
+# This approach helps in troubleshooting the execution of task
+#
+# Command to list tags:
+# ansible-playbook 26_working_with_tags-01.yml --list-tags
+#
+# Command to execute particular task (which has tag):
+# ansible-playbook 26_working_with_tags-01.yml --tags install-httpd
+# ansible-playbook 26_working_with_tags-01.yml --tags start-httpd
+
+---
+- name: Setup Apache server
+  hosts: localhost
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: present
+    tags: install-httpd
+
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started
+    tags: start-httpd
+...

@@ -1,0 +1,20 @@
+#
+# Please create roles - eastinstall and westinstall in /etc/ansible/roles directory (refer to roles directory)
+# Please save this playbook in /etc/ansible/playbooks directory
+# Command: ansible-playbook 18_main-role-playbook.yml
+#
+
+---
+- name: East Install Httpd
+  become: true
+  become_user: root
+  hosts: east-servers
+  roles:
+  - eastinstall
+
+- name: West Install httpd
+  become: true
+  become_user: root
+  hosts: localhost
+  roles:
+  - westinstall

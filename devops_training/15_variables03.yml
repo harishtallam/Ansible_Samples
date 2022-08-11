@@ -1,0 +1,18 @@
+- name: Setup Apache server
+  hosts: localhost
+
+  vars:
+    httpd_pkg: httpd
+
+  tasks:
+  - name: Install "{{ httpd_pkg }}"
+    yum:
+      name: "{{ httpd_pkg }}"
+      state: present
+    tags: install-httpd
+
+  - name: Start "{{ httpd_pkg }}"
+    service:
+      name: "{{ httpd_pkg }}"
+      state: started
+    tags: start-httpd

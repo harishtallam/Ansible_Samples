@@ -1,0 +1,6 @@
+---
+- name: Install some random package
+  yum:
+    name: git
+    state: present
+...

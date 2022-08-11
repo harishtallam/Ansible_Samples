@@ -1,0 +1,36 @@
+---
+- name: Verify apache installation
+  hosts: localhost
+
+  become: true
+  become_user: root
+
+  vars:
+    httpd_pkg: httpd
+
+  tasks:
+  - name: Ensure httpd/apache is latest version
+    yum: 
+      name: "{{ httpd_pkg }}"
+      state: latest
+
+  - name: Copy the updated configuration file
+    copy:
+      src: /home/ansibleadmin/httpd.conf
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+    - Restart apache
+
+  - name: Ensure apache is running
+    service:
+      name: "{{ httpd_pkg }}"
+      state: started
+
+  handlers:
+    - name: Restart apache
+      service:
+        name: "{{ httpd_pkg }}"
+        state: restarted
+
+
+...
